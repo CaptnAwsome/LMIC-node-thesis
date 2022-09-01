@@ -67,6 +67,9 @@ const uint8_t payloadBufferLength = 4;    // Adjust to fit max payload length
 
 
 uint8_t payloadBuffer[payloadBufferLength];
+static uint8_t foo[] = "Foo!";
+static uint8_t bar[] = "Bar!";
+
 static osjob_t doWorkJob;
 uint32_t doWorkIntervalSeconds = DO_WORK_INTERVAL_SECONDS;  // Change value in platformio.ini
 
@@ -770,7 +773,10 @@ void processWork(ostime_t doWorkJobTimeStamp)
             payloadBuffer[1] = counterValue & 0xFF;
             uint8_t payloadLength = 2;
 
-            scheduleUplink(fPort, payloadBuffer, payloadLength);
+            scheduleUplink(fPort, foo, sizeof(foo)/sizeof(foo[0]));
+            //scheduleUplink(fPort, bar, sizeof(bar)/sizeof(bar[0]));
+
+            //scheduleUplink(fPort, payloadBuffer, payloadLength);
         }
     }
 }    
