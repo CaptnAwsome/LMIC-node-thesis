@@ -773,8 +773,13 @@ void processWork(ostime_t doWorkJobTimeStamp)
             payloadBuffer[1] = counterValue & 0xFF;
             uint8_t payloadLength = 2;
 
+            // Unconfirmed Uplinks.
             scheduleUplink(fPort, foo, sizeof(foo)/sizeof(foo[0]));
             //scheduleUplink(fPort, bar, sizeof(bar)/sizeof(bar[0]));
+
+            // Confirmed Uplinks.
+            //scheduleUplink(fPort, foo, sizeof(foo)/sizeof(foo[0]), true);
+            //scheduleUplink(fPort, bar, sizeof(bar)/sizeof(bar[0]), true);
 
             //scheduleUplink(fPort, payloadBuffer, payloadLength);
         }
